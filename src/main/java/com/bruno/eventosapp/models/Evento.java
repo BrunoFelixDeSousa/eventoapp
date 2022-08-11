@@ -15,6 +15,7 @@ public class Evento implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long codigo;
+	
 	private String nome;
 	private String local;
 	private String data;
