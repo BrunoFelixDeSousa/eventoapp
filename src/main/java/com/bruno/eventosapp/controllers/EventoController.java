@@ -2,6 +2,7 @@ package com.bruno.eventosapp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,5 +35,13 @@ public class EventoController {
 		Iterable<Evento> eventos = eventoRepository.findAll();
 		andView.addObject("eventos", eventos);
 		return andView;
+	}
+	
+	@RequestMapping("/{codigo}")
+	public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo) {
+		Evento evento = eventoRepository.findByCodigo(codigo);
+		ModelAndView modelAndView = new ModelAndView("evento/detalhesEvento");
+		modelAndView.addObject("evento", evento);
+		return modelAndView;
 	}
 }
