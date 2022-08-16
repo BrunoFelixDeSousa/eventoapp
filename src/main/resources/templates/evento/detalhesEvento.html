@@ -29,6 +29,13 @@
 			<p>Data: <span th:text="${evento.data}"></span></p>
 			<p>Horario: <span th:text="${evento.horario}"></span></p>
 		</div>
+		
+		<form method="POST">
+			Nome:<input type="text" value="" name="nomeConvidado" placeholder="nome"/>
+			RG:<input type="text" value="" name="rg" placeholder="RG"/>
+			<button type="submit" class="light-blue darken-4 btn">Adicionar</button>
+		</form>
+		
 	</div>
 	
 
