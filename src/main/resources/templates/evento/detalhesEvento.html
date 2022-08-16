@@ -25,16 +25,16 @@
 	<div th:each="evento : ${evento}" class="container">
 		<div class="row">
 			<p>
-				Nome: <span th:text="${evento.nome}"></span>
+				<strong>Nome: </strong><span th:text="${evento.nome}"></span>
 			</p>
 			<p>
-				Local: <span th:text="${evento.local}"></span>
+				<strong>Local:  </strong><span th:text="${evento.local}"></span>
 			</p>
 			<p>
-				Data: <span th:text="${evento.data}"></span>
+				<strong>Data:  </strong><span th:text="${evento.data}"></span>
 			</p>
 			<p>
-				Horario: <span th:text="${evento.horario}"></span>
+				<strong>Horario:  </strong><span th:text="${evento.horario}"></span>
 			</p>
 		</div>
 
