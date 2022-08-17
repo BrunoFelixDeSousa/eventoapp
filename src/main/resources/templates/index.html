@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="utf-8">
 <title>Evento App</title>
@@ -36,6 +37,7 @@
 				<th>Local</th>
 				<th>Data</th>
 				<th>Horário</th>
+				<th>Deletar</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -47,6 +49,7 @@
 					<td><span th:text="${evento.local}"></span></td>
 					<td><span th:text="${evento.data}"></span></td>
 					<td><span th:text="${evento.horario}"></span></td>
+					<td><a th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigo)).build()}" class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Deletar</a></td>
 				</div>
 			</tr>
 		</tbody>
