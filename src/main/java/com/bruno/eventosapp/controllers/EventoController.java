@@ -67,7 +67,7 @@ public class EventoController {
 
 		Evento evento = eventoRepository.findByCodigo(codigo);
 		convidado.setEvento(evento);
-		convidadoRepository.save(convidado);
+		convidadoRepository.save(convidado);	
 		attributes.addFlashAttribute("mensagem", "Convidado adicionado com sucesso!");
 		return "redirect:/{codigo}";
 	}

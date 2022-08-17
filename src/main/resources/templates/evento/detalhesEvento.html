@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="utf-8">
 <title>Evento App</title>
@@ -24,23 +25,18 @@
 
 	<div th:each="evento : ${evento}" class="container">
 		<div class="row">
-			<p>
-				<strong>Nome: </strong><span th:text="${evento.nome}"></span>
-			</p>
-			<p>
-				<strong>Local:  </strong><span th:text="${evento.local}"></span>
-			</p>
-			<p>
-				<strong>Data:  </strong><span th:text="${evento.data}"></span>
-			</p>
-			<p>
-				<strong>Horario:  </strong><span th:text="${evento.horario}"></span>
-			</p>
+			<p><strong>Nome: </strong><span th:text="${evento.nome}"></span></p>
+			<p><strong>Local:  </strong><span th:text="${evento.local}"></span></p>
+			<p><strong>Data:  </strong><span th:text="${evento.data}"></span></p>
+			<p><strong>Horario:  </strong><span th:text="${evento.horario}"></span></p>
 		</div>
 
-		<form method="POST">
+		<th:block th:include="mensagemValidacao"></th:block>
+
+		<form method="POST" th:object="${convidado}">
 			Nome:<input type="text" value="" name="nomeConvidado" placeholder="nome" /> 
 			RG:<input type="text" value="" name="rg" placeholder="RG" />
+			
 			<button type="submit" class="light-blue darken-4 btn">Adicionar</button>
 		</form>
 		<h5>Lista de Convidados</h5>
