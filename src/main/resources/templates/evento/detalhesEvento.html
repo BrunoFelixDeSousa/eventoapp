@@ -11,53 +11,68 @@
 <!--Import materialize.css-->
 <link type="text/css" rel="stylesheet"
 	href="materialize/css/materialize.min.css" media="screen,projection" />
-
+<link type="text/css" rel="stylesheet" href="styleCss/style.css" />
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
-	<h1>Evento</h1>
-	<h3>
-		<a href="eventos" class="waves-effect waves-light btn"> <i
-			class="material-icons left">add_circle_outline</i>Lista de Eventos
-		</a>
-	</h3>
+	<header>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">Evento</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="eventos" class="waves-effect waves-light btn">
+							<i class="material-icons left">add_circle_outline</i>Lista de
+							Eventos
+					</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
 
-	<div th:each="evento : ${evento}" class="container">
+	<div th:each="evento : ${evento}" class="container detalhesEvento">
+	<h5>Detalhes do Evento</h5>
 		<div class="row">
-			<p><strong>Nome: </strong><span th:text="${evento.nome}"></span></p>
-			<p><strong>Local:  </strong><span th:text="${evento.local}"></span></p>
-			<p><strong>Data:  </strong><span th:text="${evento.data}"></span></p>
-			<p><strong>Horario:  </strong><span th:text="${evento.horario}"></span></p>
+			<p>
+				<strong>Nome: </strong><span th:text="${evento.nome}"></span>
+			</p>
+			<p>
+				<strong>Local: </strong><span th:text="${evento.local}"></span>
+			</p>
+			<p>
+				<strong>Data: </strong><span th:text="${evento.data}"></span>
+			</p>
+			<p>
+				<strong>Horario: </strong><span th:text="${evento.horario}"></span>
+			</p>
 		</div>
-
-		<th:block th:include="mensagemValidacao"></th:block>
-
+	</div>
+	<th:block th:include="mensagemValidacao"></th:block>
+	<div class="container detalhesEvento">
 		<form method="POST" th:object="${convidado}">
-			Nome:<input type="text" value="" name="nomeConvidado" placeholder="nome" /> 
-			RG:<input type="text" value="" name="rg" placeholder="RG" />
-			
+			Nome:<input type="text" value="" name="nomeConvidado"
+				placeholder="nome" /> RG:<input type="text" value="" name="rg"
+				placeholder="RG" />
+
 			<button type="submit" class="light-blue darken-4 btn">Adicionar</button>
 		</form>
-		<h5>Lista de Convidados</h5>
-		<div class="container" th:each="convidado : ${convidados}">
-			<div class="row">
-				<div class="input-field col s6">
-					<p>
-						<apan th:text="${convidado.nomeConvidado}"></apan>
-					</p>
-				</div>
-				<div class="input-field col s6">
-					<p>
-						<apan th:text="${convidado.rg}"></apan>
-					</p>
-				</div>
-
-			</div>
-		</div>
-
 	</div>
 
+
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>RG</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="convidado : ${convidados}">
+				<td><span th:text="${convidado.nomeConvidado}"></span></td>
+				<td><span th:text="${convidado.rg}"></span></td>
+			</tr>
+		</tbody>
+	</table>
 
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
